@@ -1,14 +1,11 @@
 var express = require("express");
-
-var burger = require("../models/burger.js");
-
 var router = express.Router();
-
+var burger = require("../models/burger.js");
 ///////////////////////////////End Function/////////////////////////////////////////////////////////////////////////
 router.get("/", function(req, res){
     burger.all(function(data){
         let hbsObject = {
-            burger: data
+            burgers: data
         };
         console.log(hbsObject);
         res.render("index", hbsObject);
@@ -45,7 +42,7 @@ router.delete("/api/burgers/:id", function(req, res){
     let condition = "id = " + req.params.id;
     
     burger.delete(condition, function(result){
-        if(result.affectedRows ==0){
+        if(result.affectedRows == 0){
             return res.status(404).end();
         }else{
             res.status(200).end();
