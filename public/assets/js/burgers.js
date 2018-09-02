@@ -43,6 +43,7 @@ $(function() {
     );
   });
 
+    
   $(".delete-burger").on("click", function(event) {
     var id = $(this).data("id");
 
@@ -57,4 +58,15 @@ $(function() {
       }
     );
   });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 });
