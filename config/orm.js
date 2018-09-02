@@ -68,7 +68,7 @@ update: function(table, objColVals, condition, cb){
     queryString += condition;
     
     console.log(queryString);
-    condition.query(queryString, function(err, result){
+    connection.query(queryString, function(err, result){
         if(err){
             throw err;
         }
@@ -78,15 +78,15 @@ update: function(table, objColVals, condition, cb){
 delete: function(table, condition, cb){
     let queryString = "DELETE FROM " + table;
     queryString +=" WHERE ";
-    queryString += condition;
+    queryString = queryString + condition;
     
     connection.query(queryString, function(err, result){
-        if(err){
-            throw err;
-        }
+        if(err) throw err;
+        
         cb(result);
     })
 }
+};
 
 module.exports = orm;
 
